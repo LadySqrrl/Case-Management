@@ -20,7 +20,7 @@ CREATE TABLE students (
     reeval_due          DATE                                ,
     weighting           DECIMAL(3, 2)                       ,
     case_manager        VARCHAR(50)                         ,
-    roster_teacher      VARCHAR(50)                         ,
+    roster_teacherID    INT                                 ,
     CONSTRAINT pk_student PRIMARY KEY (studentID)           ,
     CONSTRAINT fk_roster_teacher FOREIGN KEY (roster_teacher) REFERENCES providers (providerID)
 );
