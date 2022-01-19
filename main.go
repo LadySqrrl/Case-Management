@@ -1,12 +1,12 @@
-package casemanagement
+package main
 
-import "fmt"
+//import "github.com/LadySqrrl/Case-Management/insert"
+import (
+	"github.com/LadySqrrl/Case-Management/insert"
+)
 
 func main() {
-	providerID := "1234"
-	//providerName := ""
-	//distrct := ""
-	//building := ""
-	query := `INSERT INTO providers VALUES ("'` + providerID + `');`
-	fmt.Println(query)
+
+	insert.Providers()
+
 }
