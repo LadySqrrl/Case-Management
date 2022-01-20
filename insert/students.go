@@ -48,10 +48,10 @@ func Students() {
 		reevalDate = reevalDateSplit[2] + "-" + reevalDateSplit[0] + "-" + reevalDateSplit[1]
 		weighting := rows[i][5]
 		caseManager := rows[i][8]
-		rosterTeacher := rows[i][4]
+		providerID := rows[i][4] + rows[i][8]
 
 		{
-			query := "INSERT INTO students VALUES ('" + studentID + "', '" + lastName + "', '" + firstName + "', '" + dob + "', " + grade + ", '" + annualDate + "', '" + reevalDate + "', " + weighting + ", '" + caseManager + "', " + rosterTeacher + ");"
+			query := "INSERT INTO students VALUES ('" + studentID + "', '" + lastName + "', '" + firstName + "', '" + dob + "', " + grade + ", '" + annualDate + "', '" + reevalDate + "', " + weighting + ", '" + caseManager + "', '" + providerID + "');"
 
 			if _, err := db.Exec(query); err != nil {
 				log.Fatal(err)

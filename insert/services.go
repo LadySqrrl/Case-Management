@@ -25,7 +25,7 @@ func Services() {
 		serviceType := rows[i][9]
 		//building := rows[i][4]
 		//providerName := rows
-		providerID := rows[i][4] + rows[i][6]
+		providerID := rows[i][6] + rows[i][4]
 		minutes := rows[i][10]
 		frequency := rows[i][11]
 		studentID := rows[i][0] + rows[i][1] + rows[i][2]

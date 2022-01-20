@@ -11,6 +11,5 @@ func main() {
 	setup.SetUp()
 	insert.Providers()
 	insert.Students()
-	//insert.Services()
-
+	insert.Services()
 }

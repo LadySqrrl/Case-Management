@@ -19,15 +19,14 @@ func SetUp() {
 	}
 
 	// Drop providers, students, and services tables if they already exists
-	/*
-		{
+	{
 
-			query := `DROP TABLE services;`
+		query := `DROP TABLE services;`
 
-			if _, err := db.Exec(query); err != nil {
-				log.Fatal(err)
-			}
-		}*/
+		if _, err := db.Exec(query); err != nil {
+			log.Fatal(err)
+		}
+	}
 	{
 		query := `DROP TABLE students;`
 
