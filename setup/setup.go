@@ -1,4 +1,4 @@
-package casemanagement
+package setup
 
 import (
 	"database/sql"
@@ -18,12 +18,26 @@ func SetUp() {
 		log.Fatal(err)
 	}
 
-	{ // Drop providers, students, and services tables if they already exists
-		query := `
-				DROP TABLE services;
-				DROP TABLE students;
-				DROP TABLE providers;
-				`
+	// Drop providers, students, and services tables if they already exists
+	{
+
+		query := `DROP TABLE services;`
+
+		if _, err := db.Exec(query); err != nil {
+			log.Fatal(err)
+		}
+	}
+	{
+
+		query := `DROP TABLE students;`
+
+		if _, err := db.Exec(query); err != nil {
+			log.Fatal(err)
+		}
+	}
+	{
+
+		query := `DROP TABLE providers;`
 
 		if _, err := db.Exec(query); err != nil {
 			log.Fatal(err)

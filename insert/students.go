@@ -39,7 +39,7 @@ func Students() {
 	rosterTeacher := ""
 
 	{
-		query := `INSERT INTO students (student_last_name, student_first_name, dob, grade, annual_date, reeval_date, weighting, case_manager, roster_teacherID) VALUES ('` + lastName + `', '` + firstName + `', '` + dob + `', ` + grade + `, '` + annualDate + `', '` + reevalDate + `', ` + weighting + `, '` + caseManager + `', ` + rosterTeacher + `);`
+		query := "INSERT INTO students (student_last_name, student_first_name, dob, grade, annual_date, reeval_date, weighting, case_manager, roster_teacherID) VALUES ('" + lastName + "', '" + firstName + "', '" + dob + "', " + grade + ", '" + annualDate + "', '" + reevalDate + "', " + weighting + ", '" + weighting + ", '" + caseManager + "', " + rosterTeacher + ");"
 
 		if _, err := db.Exec(query); err != nil {
 			log.Fatal(err)
