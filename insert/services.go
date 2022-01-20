@@ -4,14 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	/*
-		"encoding/csv"
-		"fmt"
-		"os"
-		"strconv"
-		"strings"
-	*/
-
+	"github.com/LadySqrrl/Case-Management/spreadsheet"
 	// links to database
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -26,19 +19,23 @@ func Services() {
 		log.Fatal(err)
 	}
 
-	//rows := readOrders("students.csv")
+	rows := spreadsheet.ReadSheet("files/services.csv")
 
-	serviceType := ""
-	providerID := ""
-	minutes := ""
-	frequency := ""
-	studentID := ""
+	for i := range rows {
+		serviceType := rows[i][9]
+		//building := rows[i][4]
+		//providerName := rows
+		providerID := rows[i][4] + rows[i][6]
+		minutes := rows[i][10]
+		frequency := rows[i][11]
+		studentID := rows[i][0] + rows[i][1] + rows[i][2]
 
-	{
-		query := `INSERT INTO services (service_type, student_first_name, dob, grade, annual_date, reeval_date, weighting, case_manager, roster_teacherID) VALUES ('` + serviceType + `', ` + providerID + `, ` + minutes + `, '` + frequency + `', ` + studentID + `);`
+		{
+			query := "INSERT INTO services (service_type, providerID, service_mins, service_frequency, studentID) VALUES ('" + serviceType + "', '" + providerID + "', " + minutes + ", '" + frequency + "', '" + studentID + "');"
 
-		if _, err := db.Exec(query); err != nil {
-			log.Fatal(err)
+			if _, err := db.Exec(query); err != nil {
+				log.Fatal(err)
+			}
 		}
 	}
 }
