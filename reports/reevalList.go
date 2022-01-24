@@ -10,9 +10,10 @@ import (
 
 // Reeval holds information about reevaluations due
 type Reeval struct {
-	name       string
-	reevalDate string
-	annualDate string
+	name        string
+	reevalDate  string
+	meetingDate string
+	providerID  string
 }
 
 // ReevalList creates a list of reeval due dates
@@ -25,7 +26,15 @@ func ReevalList() []Reeval {
 		log.Fatal(err)
 	}
 
-	rows, err := db.Query("SELECT CONCAT(student_first_name, ' ', student_last_name), reeval_due, annual_due FROM students WHERE reeval_due < '2022-10-01';")
+	rows, err := db.Query(
+		`SELECT CONCAT(s.student_first_name, ' ', s.student_last_name), p.provider_name, s.reeval_due,
+		CASE WHEN s.annual_due < s.reeval_due THEN s.annual_due ELSE s.reeval_due END AS "Meeting" 
+		FROM students s
+		INNER JOIN providers p 
+		ON s.providerID = p.providerID
+		WHERE s.reeval_due < '2022-10-01'
+		ORDER BY s.reeval_due;`)
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -35,7 +44,7 @@ func ReevalList() []Reeval {
 	for rows.Next() {
 		var r Reeval
 
-		err := rows.Scan(&r.name, &r.reevalDate, &r.annualDate)
+		err := rows.Scan(&r.name, &r.providerID, &r.reevalDate, &r.meetingDate)
 		if err != nil {
 			log.Fatal(err)
 		}
