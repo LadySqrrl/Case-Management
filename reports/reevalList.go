@@ -16,7 +16,7 @@ type Reeval struct {
 	providerID  string
 }
 
-// ReevalList creates a list of reeval due dates
+// ReevalList creates a slice of Reevals
 func ReevalList() []Reeval {
 	db, err := sql.Open("mysql", "root:root@(127.0.0.1:3307)/cases?parseTime=true")
 	if err != nil {
