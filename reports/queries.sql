@@ -15,3 +15,4 @@ FROM students
 
 
 SELECT CASE WHEN annual_due < reeval_due THEN annual_due ELSE reeval_due END AS "Meeting" FROM students;
+
