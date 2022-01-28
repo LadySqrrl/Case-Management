@@ -17,5 +17,5 @@ CASE WHEN s.annual_due < s.reeval_due THEN s.annual_due ELSE s.reeval_due END AS
 FROM students s
 INNER JOIN providers p 
 ON s.providerID = p.providerID
-WHERE "Meeting" BETWEEN '2021-11-01' AND '2021-12-01'
-ORDER BY "Meeting";
+WHERE s.reeval_due BETWEEN '2021-11-01' AND '2021-12-01'
+ORDER BY s.reeval_due;
