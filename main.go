@@ -5,11 +5,13 @@ import (
 	//"github.com/LadySqrrl/Case-Management/insert"
 	//"github.com/LadySqrrl/Case-Management/setup"
 	"github.com/LadySqrrl/Case-Management/reports"
+	//"fmt"
 )
 
 func main() {
 
 	list := reports.ReevalList()
+
 	reports.PrintReevals(list)
 
 }
