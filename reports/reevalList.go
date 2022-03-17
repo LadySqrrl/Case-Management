@@ -16,6 +16,12 @@ type Reeval struct {
 	providerID  string
 }
 
+//ViewData shows widget data
+type ViewData struct {
+	Name    string
+	Reevals []Reeval
+}
+
 // ReevalList creates a slice of Reevals
 func ReevalList() []Reeval {
 	db, err := sql.Open("mysql", "root:root@(127.0.0.1:3307)/cases?parseTime=true")

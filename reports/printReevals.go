@@ -9,3 +9,7 @@ func PrintReevals(list []Reeval) {
 		fmt.Println(list[i].name, " has a reeval due, the meeting is due by ", list[i].meetingDate, " and the reeval date is ", list[i].reevalDate, ". The roster teacher is ", list[i].providerID)
 	}
 }
+
+func HTMLReevals(list []Reeval) {
+
+}
