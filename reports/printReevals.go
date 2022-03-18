@@ -10,6 +10,7 @@ func PrintReevals(list []Reeval) {
 	}
 }
 
+//F HTMLReevals prints the reevals to the HTML template
 func HTMLReevals(list []Reeval) {
 
 }
