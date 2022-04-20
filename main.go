@@ -23,6 +23,9 @@ func main() {
 
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":3000", nil)
+
+	list := reports.ReevalList()
+	reports.PrintReevals(list)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
